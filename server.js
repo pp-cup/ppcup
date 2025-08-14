@@ -199,8 +199,9 @@ app.delete('/api/participants', (req, res) => {
 });
 
 // ===== Сразу запускаем сервер =====
-app.listen(PORT, () => {
-  console.log(`✅ Server running on port ${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server running on port ${PORT}`);
+});
 
   // ===== Фоновые задачи после старта =====
   (async () => {

@@ -11,9 +11,10 @@ const PORT = process.env.PORT || 3000;
 app.use(express.static('public'));
 app.use(express.json());
 app.use(session({
-  secret: process.env.SESSION_SECRET || 'some secret here', // Используйте переменную окружения
+  secret: process.env.SESSION_SECRET || 'some default secret',
   resave: false,
   saveUninitialized: true,
+  cookie: { secure: process.env.NODE_ENV === 'production' }
 }));
 
 const DB_PATH = path.join(__dirname, 'data', 'database.json');
@@ -118,7 +119,6 @@ fetchOsuAccessToken().then(() => {
 });
 
 // === API ===
-
 app.get('/api/data', (req, res) => {
   const data = loadData();
   data.sort((a, b) => b.Points - a.Points);
@@ -237,4 +237,10 @@ process.on('SIGTERM', () => {
     console.log('Closed remaining connections');
     process.exit(0);
   });
+});
+
+// Обработка ошибок
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Что-то пошло не так!');
 });

@@ -33,7 +33,7 @@ function saveData(data) {
 let osuAccessToken = null;
 const osuClientId = process.env.OSU_CLIENT_ID;
 const osuClientSecret = process.env.OSU_CLIENT_SECRET;
-const redirectUri = process.env.REDIRECT_URI || 'http://localhost:3000/auth/callback';
+const redirectUri = process.env.REDIRECT_URI || 'https://ppcup.vercel.app/auth/callback';
 
 async function fetchOsuAccessToken() {
   try {

@@ -193,3 +193,10 @@ app.listen(PORT, '0.0.0.0', () => {
     setInterval(updateParticipantsPP, 10 * 60 * 1000);
   }, 1000);
 });
+process.on('SIGTERM', () => {
+    console.log('Received SIGTERM, shutting down gracefully');
+    server.close(() => {
+        console.log('Closed remaining connections');
+        process.exit(0);
+    });
+});

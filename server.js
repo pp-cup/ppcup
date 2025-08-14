@@ -184,14 +184,7 @@ app.post('/api/unparticipate', (req, res) => {
 
 // Запуск сервера
 app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Server running on port ${PORT}`);
-
-  // Фоновый процесс через setTimeout, чтобы Timeweb сразу стартовал
-  setTimeout(async () => {
-    await fetchOsuAccessToken();
-    updateParticipantsPP();
-    setInterval(updateParticipantsPP, 10 * 60 * 1000);
-  }, 1000);
+    console.log(`Server running on http://0.0.0.0:${PORT}`);
 });
 process.on('SIGTERM', () => {
     console.log('Received SIGTERM, shutting down gracefully');

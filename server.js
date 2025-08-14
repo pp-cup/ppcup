@@ -43,7 +43,7 @@ async function fetchOsuAccessToken() {
       scope: 'public',
     });
     osuAccessToken = response.data.access_token;
-    console.log('osu! access token получен');
+    console.log('✅ osu! access token получен');
   } catch (err) {
     console.error('Ошибка получения токена:', err.response?.data || err.message);
   }
@@ -198,12 +198,11 @@ app.delete('/api/participants', (req, res) => {
   res.json({ success: true });
 });
 
-// ===== Сразу запускаем сервер =====
+// ===== Запуск сервера =====
 app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Server running on port ${PORT}`);
-});
+  console.log(`✅ Server running on port ${PORT}`);
 
-  // ===== Фоновые задачи после старта =====
+  // ===== Фоновые задачи =====
   (async () => {
     await fetchOsuAccessToken();
     await updateParticipantsPP();

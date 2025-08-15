@@ -1,26 +1,20 @@
 {
-  "name": "osu-participation-app",
+  "name": "ppcup-timeweb",
   "version": "1.0.0",
-  "main": "server.js",
+  "private": true,
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
-  "start": "NODE_ENV=production node server.js"
+    "start": "node server.js",
+    "serve": "node server.js"
   },
   "dependencies": {
-    "axios": "^1.11.0",
-    "dotenv": "^16.6.1",
-    "express": "^4.21.2",
-    "express-session": "^1.18.2"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/pp-cup/pp-cup.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/pp-cup/pp-cup/issues"
-  },
-  "homepage": "https://github.com/pp-cup/pp-cup#readme",
-  "description": ""
+    "axios": "^1.7.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-session": "^1.17.3",
+    "helmet": "^7.1.0"
+  }
 }
